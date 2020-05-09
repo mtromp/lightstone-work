@@ -63,7 +63,13 @@ commented out the SUBSYSTEM line in 81-lightstone.rules and did a reload. No usb
 
 Unplug and replug in the Lightstone and the device is now Bus 001 Device 007 instead of Device 004
 
-There were two crash notices. Will reboot.
+There were two crash notices. Will reboot. 20200417: the crashes are on boot related to xrandr: video monitor screen size stuff.
+
+## 20200503 Notes
+Try changing the rule to this:
+SUBSYSTEM=="usb", ATTR{removable}=="removable", ATTR{idVendor}=="0483", ATTR{idProduct}=="0035", MODE:="666", GROUP="users"
+
+THIS WORKS!!! Now to liblghtstone_test returns values!!!!!
 
 
 ## 20191019 Notes
