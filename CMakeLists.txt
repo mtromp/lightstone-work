@@ -18,10 +18,10 @@ set (CMAKE_CXX_FLAGS "-std=c++1z")
 # Needed by gtest
 find_package( Threads )
 
-find_package ( GTest REQUIRED )
+include ( external/CMakeLists.txt )
 
-add_subdirectory( library )
-add_subdirectory( application )
+#add_subdirectory( library )
+#add_subdirectory( application )
 
 enable_testing()
 

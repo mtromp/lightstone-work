@@ -10,16 +10,26 @@ my code on the excellent work that Kyle Machulis did with
 - Ubuntu 18.04
 - cmake `sudo apt install cmake`
 - gmock `sudo apt install google-mock`
-- FindGMock.cmake from https://gitlab.enseeiht.fr/abcd/abcd/tree/mumps_scaling/cmake/Modules
-  - place in `/usr/share/cmake-3.10/Modules`
+- create a symlink to googletest so that the gmock/gtest libraries are built
+  during the application build. This ensures the same compiler flags are used
+  for the application/library/test and for gtest/gmock.
 
 ## Setup directory structure
 
 - lightstone-work
   - test
   - library
+  - external
   - application
 
-## Created top CMakeLists.txt
+```
+cd ~/workspace/lightstone-work/external
+ln -s /usr/src/googletest googletest
+```
 
-Could not find GTest/GMock 
+## Created CMakeLists.txt
+
+Create enough of the CMaklists.txt structure and a main.cpp for tests to
+verify that CMake is happy and it is possible to build.
+
+
