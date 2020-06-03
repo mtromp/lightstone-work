@@ -3,14 +3,16 @@ add_executable( libraryTests "" )
 target_sources(
     libraryTests
     PRIVATE
-        lightstoneDriverTest.cpp
+        LightstoneDriverTest.cpp
         main.cpp
     )
 
 target_link_libraries(
     libraryTests
     PRIVATE
+        lightstone
         gmock
+        ${LibUSB_LIBRARIES}
     )
 
 add_test( libraryTests ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/libraryTests)

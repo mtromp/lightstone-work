@@ -20,7 +20,16 @@ find_package( Threads )
 
 include ( external/CMakeLists.txt )
 
-#add_subdirectory( library )
+# ##################
+# I needed to place FindLibUSB in the cmake Modules folder
+# The target_link_libraries configuration is where
+# ${LibUSB_LIBRARIES} is used. (Blood and sweat here)
+find_package ( LibUSB )
+if ( LibUSB_FOUND )
+  include_directories( ${LibUSB_INCLUDE_DIRS} )
+endif ( LibUSB_FOUND )
+
+add_subdirectory( library )
 #add_subdirectory( application )
 
 enable_testing()
