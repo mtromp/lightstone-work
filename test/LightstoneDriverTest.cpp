@@ -20,7 +20,6 @@ TEST(LightstoneDriver, InstantiatingLightstoneReturnsObject)
 
 TEST_F(LightstoneTest, CreatingLightstoneSucceeds)
 {
-
   int status = testLightstone.create();
 
   ASSERT_EQ(status, 0);
@@ -32,4 +31,21 @@ TEST_F(LightstoneTest, OpenLightstoneSucceeds)
   int status = testLightstone.open();
 
   EXPECT_EQ(status, 0);
+}
+
+TEST_F(LightstoneTest, OpenedLightstoneReturnsTrueFromisOpen)
+{
+  testLightstone.create();
+  testLightstone.open();
+
+  EXPECT_TRUE(testLightstone.isOpen());
+}
+
+TEST_F(LightstoneTest, ClosingAnOpenedLightstoneReturnsFalseFromisOpen)
+{
+  testLightstone.create();
+  testLightstone.open();
+  testLightstone.close();
+
+  EXPECT_FALSE(testLightstone.isOpen());
 }
