@@ -7,6 +7,9 @@ class Lightstone
 {
 public:
   Lightstone();
+  //connect to the libusb and setup the data structures
+  int create();
+  int open();
 
 private:
   libusb_context* context;
