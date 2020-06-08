@@ -16,6 +16,7 @@ TEST(LightstoneDriver, InstantiatingLightstoneReturnsObject)
   Lightstone* lightstone = new Lightstone();
 
   ASSERT_NE(lightstone, nullptr);
+  EXPECT_FALSE(lightstone->isOpen());
 }
 
 TEST_F(LightstoneTest, CreatingLightstoneSucceeds)
@@ -48,4 +49,10 @@ TEST_F(LightstoneTest, ClosingAnOpenedLightstoneReturnsFalseFromisOpen)
   testLightstone.close();
 
   EXPECT_FALSE(testLightstone.isOpen());
+}
+
+TEST(LightstoreDriver, OpenWithoutCreateReturnsInitError)
+{
+  Lightstone* lightstone = new Lightstone();
+  EXPECT_EQ(lightstone->open(), lightstone->ERROR_INIT);
 }

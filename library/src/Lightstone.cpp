@@ -8,20 +8,30 @@ Lightstone::Lightstone()
 Lightstone::~Lightstone()
 {
   if (this->isOpen())
-    {
-      this->close();
-    }
+  {
+    this->close();
+  }
 }
 
 int Lightstone::create()
 {
-  return 0;
+  int retStatus = libusb_init(&this->context);
+  if (retStatus == 0 )
+  {
+    this->initialized = true;
+  }
+  return retStatus;
 }
 
 int Lightstone::open()
 {
-  this->opened = true;
-  return 0;
+  int retStatus = this->ERROR_INIT;
+  if (this->initialized)
+  {
+    this->opened = true;
+    retStatus = 0;
+  }
+  return retStatus;
 }
 
 int Lightstone::close()

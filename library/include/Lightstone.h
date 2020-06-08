@@ -14,10 +14,12 @@ public:
   int open();
   int close();
   bool isOpen();
+  const int ERROR_INIT = -1;
 
 private:
-  libusb_context* context;
+  libusb_context* context = nullptr;
   bool opened = false;
+  bool initialized = false;
 };
 
 #endif // LIGHTSTONE_H
