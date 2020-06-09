@@ -17,9 +17,14 @@ public:
   const int ERROR_INIT = -1;
 
 private:
+  int getDeviceList();
+  bool findAndExtractLightstone();
   libusb_context* context = nullptr;
   bool opened = false;
   bool initialized = false;
+
+  libusb_device** devices = nullptr;
+  libusb_device_handle* lightstoneDeviceHandle = nullptr;
 };
 
 #endif // LIGHTSTONE_H
