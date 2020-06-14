@@ -17,6 +17,8 @@ TEST(LightstoneDriver, InstantiatingLightstoneReturnsObject)
 
   ASSERT_NE(lightstone, nullptr);
   EXPECT_FALSE(lightstone->isOpen());
+
+  delete lightstone;
 }
 
 TEST_F(LightstoneTest, CreatingLightstoneSucceeds)
@@ -32,6 +34,7 @@ TEST_F(LightstoneTest, OpenLightstoneSucceeds)
   int status = testLightstone.open();
 
   EXPECT_EQ(status, 0);
+  testLightstone.close();
 }
 
 TEST_F(LightstoneTest, OpenedLightstoneReturnsTrueFromisOpen)
@@ -40,6 +43,7 @@ TEST_F(LightstoneTest, OpenedLightstoneReturnsTrueFromisOpen)
   testLightstone.open();
 
   EXPECT_TRUE(testLightstone.isOpen());
+  testLightstone.close();
 }
 
 TEST_F(LightstoneTest, ClosingAnOpenedLightstoneReturnsFalseFromisOpen)
@@ -55,9 +59,10 @@ TEST(LightstoreDriver, OpenWithoutCreateReturnsInitError)
 {
   Lightstone* lightstone = new Lightstone();
   EXPECT_EQ(lightstone->open(), lightstone->ERROR_INIT);
+  delete lightstone;
 }
 
-TEST_F(LightstoneTest, DISABLED_ReadingOnePairReturnsNonZeroValues)
+TEST_F(LightstoneTest, ReadingOnePairReturnsNonZeroValues)
 {
   testLightstone.create();
   testLightstone.open();
@@ -65,4 +70,5 @@ TEST_F(LightstoneTest, DISABLED_ReadingOnePairReturnsNonZeroValues)
 
   EXPECT_NE(thePair.heartRateVariability, (float)0.0);
   EXPECT_NE(thePair.skinConductance, (float)0.0);
+  testLightstone.close();
 }

@@ -49,6 +49,8 @@ int Lightstone::open()
 
 int Lightstone::close()
 {
+  libusb_release_interface(this->lightstoneDeviceHandle, 0);
+  libusb_close(this->lightstoneDeviceHandle);
   this->opened = false;
   return 0;
 }
