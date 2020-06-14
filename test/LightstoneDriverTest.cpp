@@ -56,3 +56,13 @@ TEST(LightstoreDriver, OpenWithoutCreateReturnsInitError)
   Lightstone* lightstone = new Lightstone();
   EXPECT_EQ(lightstone->open(), lightstone->ERROR_INIT);
 }
+
+TEST_F(LightstoneTest, DISABLED_ReadingOnePairReturnsNonZeroValues)
+{
+  testLightstone.create();
+  testLightstone.open();
+  LightstonePair thePair = testLightstone.readOnePair();
+
+  EXPECT_NE(thePair.heartRateVariability, (float)0.0);
+  EXPECT_NE(thePair.skinConductance, (float)0.0);
+}

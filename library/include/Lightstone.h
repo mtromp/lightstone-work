@@ -3,6 +3,11 @@
 
 #include <libusb.h>
 
+typedef struct {
+  float heartRateVariability;
+  float skinConductance;
+}LightstonePair;
+
 class Lightstone
 {
 public:
@@ -14,11 +19,17 @@ public:
   int open();
   int close();
   bool isOpen();
+  LightstonePair readOnePair();
   const int ERROR_INIT = -1;
 
 private:
   int getDeviceList();
   bool findAndExtractLightstone();
+  int readBlock(unsigned char* block);
+
+  const int BLOCK_SIZE = 256;
+  const unsigned char END_POINT = 0x81;
+  const unsigned int TIMEOUT = 0x10;
   libusb_context* context = nullptr;
   bool opened = false;
   bool initialized = false;

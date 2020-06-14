@@ -58,6 +58,29 @@ bool Lightstone::isOpen()
   return this->opened;
 }
 
+LightstonePair Lightstone::readOnePair()
+{
+  LightstonePair thePair;
+  thePair.heartRateVariability = (float)0.0;
+  thePair.skinConductance = (float)0.0;
+  int transferCount;
+  unsigned char theBlock[BLOCK_SIZE];
+  if (this->isOpen())
+  {
+    while(1)
+    {
+      transferCount = this->readBlock(theBlock);
+      if (transferCount == 0x8 || transferCount == 0x9)
+      {
+        thePair.heartRateVariability = -1.0;
+        thePair.skinConductance = -1.0;
+        break;
+      }
+    }
+  }
+  return thePair;
+}
+
 int Lightstone::getDeviceList()
 {
   int errorCode = libusb_get_device_list(context, &devices);
@@ -90,4 +113,15 @@ bool Lightstone::findAndExtractLightstone()
     }
   }
   return foundDevice;
+}
+
+int Lightstone::readBlock(unsigned char* block)
+{
+  int transferCount = 0;
+  int retCode = libusb_bulk_transfer(
+        this->lightstoneDeviceHandle,
+        this->END_POINT,
+        block, 8, &transferCount,
+        this->TIMEOUT);
+  return transferCount;
 }
