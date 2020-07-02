@@ -72,7 +72,7 @@ LightstonePair Lightstone::readOnePair()
     while(1)
     {
       transferCount = this->readBlock(theBlock);
-      if (transferCount == 0x8 || transferCount == 0x9)
+      if (transferCount == 16 || transferCount == 17)
       {
         thePair.heartRateVariability = -1.0;
         thePair.skinConductance = -1.0;
@@ -121,9 +121,11 @@ int Lightstone::readBlock(unsigned char* block)
 {
   int transferCount = 0;
   int retCode = libusb_bulk_transfer(
-        this->lightstoneDeviceHandle,
-        this->END_POINT,
-        block, 8, &transferCount,
-        this->TIMEOUT);
+        this->lightstoneDeviceHandle, //Device Handle
+        this->END_POINT,  //Device Endpoint address (0x81 who discovered that?)
+        block,            // buffer where the data goes
+        this->BLOCK_SIZE-1, // length of data buffer
+        &transferCount,   // Actual length transferred
+        this->TIMEOUT);  // timeout for transfer in milliseconds
   return transferCount;
 }
