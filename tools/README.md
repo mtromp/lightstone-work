@@ -17,9 +17,12 @@ across the following:
 
 ## Setup VUSB-analyzer on Ubuntu 18.04
 
-The analyzer is written in Python 2.7 and a number of packages needed to be
+The analyzer is written in `Python 2.7` and a number of packages needed to be
 installed to get the code to work. I had to make a change to the source code,
 which is why I have placed it in this repository.
 
 **TO BE ADDED LATER**
-List of packages to be added to Ubuntu 18.04.
+
+```
+sudo apt install python-gtk2 python-gtk2-dev python-gnome2 libcanberra-gtk-module
+```
