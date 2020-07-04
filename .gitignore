@@ -9,3 +9,5 @@ compile_commands.json
 CTestTestfile.cmake
 *.user
 external/googletest
+
+.DS_STORE

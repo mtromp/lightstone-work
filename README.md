@@ -1,6 +1,12 @@
 # lightstone-work
 Create a liblightstone that builds on ubuntu18.04, and add other capabilities.
 
+## Other useful documents in this repository
+
+- [How to Build](build.md)
+- [FindLibUSB.cmake](support/README.md)
+- [Detective Work](tools/README.md)
+
 ## Steps to successfully build liblightstone
 
 - Fork qdot/liblightstone into [my github space](https://github.com/mtromp/liblightstone).
