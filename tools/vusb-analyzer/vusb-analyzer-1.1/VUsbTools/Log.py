@@ -201,10 +201,10 @@ class VmxLogParser(UsbIOParser):
            """
         # Cache the results of strptime. It only changes every
         # second, and this was taking more than 50% of our parsing time!
-        stamp = line[:15]
+        stamp = line[:19]
         savedStamp, parsed = self._timeCache
         if savedStamp != stamp:
-            parsed = time.strptime(stamp, "%b %d %H:%M:%S")
+            parsed = time.strptime(stamp, "%Y-%m-%dT%H:%M:%S")
             self._timeCache = stamp, parsed
 
         now = time.localtime()
