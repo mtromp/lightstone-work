@@ -13,6 +13,9 @@ across the following:
 - [VUSB Analyzer](http://vusb-analyzer.sourceforge.net)
   The tutorial page gave instructions on how to configure VMWare to be in debug
   mode and how to make sure that the USB calls were saved to the log file.
+- [github vusb-analyzer][https://github.com/scanlime/vusb-analyzer]
+  I found this link after having downloaded the `tar.gz` file from sourceforge.
+  The README in github gives another VMWARE configuration flag that I used.
 
 
 ## Setup VUSB-analyzer on Ubuntu 18.04
@@ -21,8 +24,12 @@ The analyzer is written in `Python 2.7` and a number of packages needed to be
 installed to get the code to work. I had to make a change to the source code,
 which is why I have placed it in this repository.
 
-**TO BE ADDED LATER**
-
 ```
 sudo apt install python-gtk2 python-gtk2-dev python-gnome2 libcanberra-gtk-module
 ```
+
+When analyzing the date captured on the MacBook Pro, I found that the timestamp
+parsing was not working. I made the needed change in `VUsbTools/Log.py`.
+
+I have included the log file and an extraction of the lightstone data to help
+me develop an accurate parser.
