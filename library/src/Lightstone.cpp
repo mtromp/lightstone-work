@@ -1,5 +1,7 @@
 #include "Lightstone.h"
 
+#include <cstddef>
+
 Lightstone::Lightstone()
 {
 

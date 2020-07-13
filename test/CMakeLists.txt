@@ -4,6 +4,7 @@ target_sources(
     libraryTests
     PRIVATE
         LightstoneDriverTest.cpp
+        RawCaptureTest.cpp
         main.cpp
     )
 
