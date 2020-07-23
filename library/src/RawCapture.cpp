@@ -81,6 +81,12 @@ void RawCapture::returnText(unsigned char block[CAPTURE_SIZE])
   this->foundInitialRaw = false;
 }
 
+std::string RawCapture::returnTextAsString()
+{
+  std::string local(reinterpret_cast<const char*>(this->readyBlock));
+  return local;
+}
+
 void RawCapture::moveText(unsigned char* text, int start, int count)
 {
   for (int i = start; i < count; i++)

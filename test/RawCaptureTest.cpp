@@ -32,10 +32,9 @@ TEST(RawCapture, ProvidesATextStringWithData)
   returnedValue = localRawCapture.extractText(rawData4);
   EXPECT_TRUE(returnedValue);
 
-  unsigned char theText[RawCapture::CAPTURE_SIZE];
-  localRawCapture.returnText(theText);
+  std::string myString = localRawCapture.returnTextAsString();
 
-  EXPECT_EQ(theText[5], '0');
+  EXPECT_EQ(myString[5], '0');
 }
 
 TEST(RawCapture, DataStartingInMiddleOfBlockStillWorks)
@@ -56,8 +55,8 @@ TEST(RawCapture, DataStartingInMiddleOfBlockStillWorks)
   returnedValue = localRawCapture.extractText(rawData2);
   returnedValue = localRawCapture.extractText(rawData3);
 
-   unsigned char theText[RawCapture::CAPTURE_SIZE];
-   localRawCapture.returnText(theText);
+  unsigned char theText[RawCapture::CAPTURE_SIZE];
+  localRawCapture.returnText(theText);
 
   EXPECT_EQ(theText[5], '0');
 

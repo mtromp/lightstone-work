@@ -1,6 +1,7 @@
 #ifndef RAWCAPTURE_H
 #define RAWCAPTURE_H
 
+#include <string>
 #include <libusb.h>
 
 class RawCapture
@@ -11,6 +12,7 @@ public:
 
   bool extractText(unsigned char* block);
   void returnText(unsigned char block[CAPTURE_SIZE]);
+  std::string returnTextAsString();
 
 private:
   void moveText(unsigned char* text, int start, int count);
