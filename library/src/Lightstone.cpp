@@ -69,7 +69,8 @@ LightstonePair Lightstone::readOnePair()
   thePair.heartRateVariability = (float)0.0;
   thePair.skinConductance = (float)0.0;
   int transferCount;
-  unsigned char theBlock[BLOCK_SIZE];
+  unsigned char theBlock[BLOCK_SIZE+1];
+  theBlock[BLOCK_SIZE] = 0; //terminate the block.
   RawCapture localRawCapture;
   bool rawCaptureComplete;
   if (this->isOpen())

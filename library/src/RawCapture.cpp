@@ -63,17 +63,19 @@ bool RawCapture::extractText(unsigned char* block)
       }
     }
     moveText(text, moveStart, moveCount);
+    this->readyBlock[this->readyPointer] = 0; // terminate
   }
   return retBool;
 }
 
-void RawCapture::returnText(unsigned char block[20])
+void RawCapture::returnText(unsigned char block[CAPTURE_SIZE])
 {
   for (int i = 0; i < this->readyPointer; i++)
   {
     block[i] = this->readyBlock[i];
     this->readyBlock[i] = 0;
   }
+  block[this->readyPointer] = 0; //terminate
   this->readyPointer = -1;
   this->foundFinalRaw = false;
   this->foundInitialRaw = false;

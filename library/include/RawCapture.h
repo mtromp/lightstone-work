@@ -7,14 +7,15 @@ class RawCapture
 {
 public:
   RawCapture();
+  static const int CAPTURE_SIZE=21; // 20 plus terminator
 
   bool extractText(unsigned char* block);
-  void returnText(unsigned char block[20]);
+  void returnText(unsigned char block[CAPTURE_SIZE]);
 
 private:
   void moveText(unsigned char* text, int start, int count);
 
-  unsigned char readyBlock[20];
+  unsigned char readyBlock[CAPTURE_SIZE];
   int readyPointer;
 
   bool foundInitialRaw;
