@@ -91,5 +91,28 @@ returnedValue = localRawCapture.extractText(rawData4);
   localRawCapture.returnText(theText);
 
   EXPECT_EQ(theText[5], '0');
+}
 
+TEST(RawCapture, SERtagWillAlsoBeReturned)
+{
+  bool returnedValue;
+
+  //  07 57 3e 0a 0d 3c 53 45                         W>..<SE
+  //  07 52 3e 30 30 30 30 3c                         R>0000<
+  //  07 5c 53 45 52 3e 0a 0d                         \SER>..
+  unsigned char rawData1[8] =
+     {0x07, 0x57, 0x3e, 0x0a, 0x0d, 0x3c, 0x53, 0x45};
+  unsigned char rawData2[8] =
+     {0x07, 0x52, 0x3e, 0x30, 0x30, 0x30, 0x30, 0x3c};
+  unsigned char rawData3[8] =
+     {0x07, 0x5c, 0x53, 0x45, 0x52, 0x3e, 0x0a, 0x0d};
+
+  RawCapture localRawCapture;
+  returnedValue = localRawCapture.extractText(rawData1);
+  returnedValue = localRawCapture.extractText(rawData2);
+  returnedValue = localRawCapture.extractText(rawData3);
+  unsigned char theText[20];
+  localRawCapture.returnText(theText);
+
+  EXPECT_EQ(theText[2], 'E');
 }

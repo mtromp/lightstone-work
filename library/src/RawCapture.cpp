@@ -20,7 +20,7 @@ bool RawCapture::extractText(unsigned char* block)
   int backslashIndex = -1;
 
   unsigned char text[block[0]];
-  for (int i = 0; i<=textCount; i++)
+  for (int i = 0; i<textCount; i++)
   {
     text[i] = block[i+1];
     if (text[i] == 0x3c)
@@ -44,7 +44,7 @@ bool RawCapture::extractText(unsigned char* block)
   {
     this->readyPointer = 0;
     moveText(text, lessThanIndex, textCount);
-    if (foundGreaterThan)
+    if (foundGreaterThan && (lessThanIndex < greaterThanIndex))
     {
       this->foundInitialRaw = true;
     }
