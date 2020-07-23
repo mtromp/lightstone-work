@@ -40,7 +40,7 @@ bool RawCapture::extractText(unsigned char* block)
     }
   }
   // Are we looking for <?
-  if (this->readyPointer == -1 && foundLessThan)
+  if (this->readyPointer == -1 && foundLessThan && !foundBackslash)
   {
     this->readyPointer = 0;
     moveText(text, lessThanIndex, textCount);

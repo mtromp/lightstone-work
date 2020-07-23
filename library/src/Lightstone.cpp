@@ -1,4 +1,5 @@
 #include "Lightstone.h"
+#include "RawCapture.h"
 
 #include <cstddef>
 
@@ -69,16 +70,22 @@ LightstonePair Lightstone::readOnePair()
   thePair.skinConductance = (float)0.0;
   int transferCount;
   unsigned char theBlock[BLOCK_SIZE];
+  RawCapture localRawCapture;
+  bool rawCaptureComplete;
   if (this->isOpen())
   {
     while(1)
     {
       transferCount = this->readBlock(theBlock);
-      if (transferCount == 16 || transferCount == 17)
+      if (transferCount > 0)
       {
-        thePair.heartRateVariability = -1.0;
-        thePair.skinConductance = -1.0;
-        break;
+        rawCaptureComplete = localRawCapture.extractText(theBlock);
+        if (rawCaptureComplete)
+        {
+          thePair.heartRateVariability = -1.0;
+          thePair.skinConductance = -1.0;
+          break;
+        }
       }
     }
   }
@@ -126,7 +133,7 @@ int Lightstone::readBlock(unsigned char* block)
         this->lightstoneDeviceHandle, //Device Handle
         this->END_POINT,  //Device Endpoint address (0x81 who discovered that?)
         block,            // buffer where the data goes
-        this->BLOCK_SIZE-1, // length of data buffer
+        this->BLOCK_SIZE, // length of data buffer
         &transferCount,   // Actual length transferred
         this->TIMEOUT);  // timeout for transfer in milliseconds
   return transferCount;

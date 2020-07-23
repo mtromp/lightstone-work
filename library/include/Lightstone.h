@@ -27,7 +27,7 @@ private:
   bool findAndExtractLightstone();
   int readBlock(unsigned char* block);
 
-  const int BLOCK_SIZE = 256;
+  const int BLOCK_SIZE = 8;
   const unsigned char END_POINT = 0x81;
   const unsigned int TIMEOUT = 0x10;
   libusb_context* context = nullptr;
