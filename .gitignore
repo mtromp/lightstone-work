@@ -9,5 +9,5 @@ compile_commands.json
 CTestTestfile.cmake
 *.user
 external/googletest
-
+*.autosave
 .DS_STORE
