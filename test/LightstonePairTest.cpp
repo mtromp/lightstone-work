@@ -18,3 +18,15 @@ TEST(LightstonePair, PopulatesHRVFromString)
   EXPECT_FLOAT_EQ(2.03, hrvData);
 
 }
+
+TEST(LightstonePair, PopulatesSCFromString)
+{
+  std::string rawString("<RAW>021A 07EE<\\RAW>");
+  LightstonePair localPair;
+  bool success = localPair.parseString(rawString);
+
+  EXPECT_TRUE(success);
+  float sclData = localPair.getSCL();
+  EXPECT_FLOAT_EQ(5.38, sclData);
+
+}

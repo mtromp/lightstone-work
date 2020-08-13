@@ -9,12 +9,13 @@ public:
   LightstonePair();
   bool parseString(std::string theRawString);
   float getHRV();
+  float getSCL();
 
 private:
   unsigned int hex2dec(std::string charPair);
 
+  float sclFloat;
   float hrvFloat;
-  float scrFloat;
 };
 
 #endif // LIGHTSTONEPAIR_H
