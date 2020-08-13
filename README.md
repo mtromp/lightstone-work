@@ -74,3 +74,15 @@ Ubuntu 18.04 at this time, with the following goals:
 I will start to create github issues to identify my intended work. I will make this repository public so that others have visibility into what I am doing.
 
 The spike branch contains some helpful information for viewing and controlling udev. Bring that markdown file, with improvements into master.
+
+## Resources
+
+Here's where I found code to help me with my work:
+
+- [liblightstone](https://github.com/openyou/liblightstone)
+- [LSMonitor](https://sourceforge.net/projects/lsm/files/lsm-v7)
+
+I have not had a chance to explore the following, but I don't want to lose
+track of this information.
+
+- [lightstone4net](https://github.com/James-Lockwood/lightstone4net)
