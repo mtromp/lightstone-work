@@ -16,7 +16,6 @@ TEST(LightstonePair, PopulatesHRVFromString)
   EXPECT_TRUE(success);
   float hrvData = localPair.getHRV();
   EXPECT_FLOAT_EQ(2.03, hrvData);
-
 }
 
 TEST(LightstonePair, PopulatesSCFromString)
@@ -28,5 +27,14 @@ TEST(LightstonePair, PopulatesSCFromString)
   EXPECT_TRUE(success);
   float sclData = localPair.getSCL();
   EXPECT_FLOAT_EQ(5.38, sclData);
+}
 
+TEST(LightstonePair, ReturnsErrorWhenPassedSERstring)
+{
+  std::string rawString("<SER>0000<\\SER>");
+  LightstonePair localPair;
+
+  bool success = localPair.parseString(rawString);
+
+  EXPECT_FALSE(success);
 }
