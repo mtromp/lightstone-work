@@ -1,4 +1,5 @@
 #include "Lightstone.h"
+#include "LightstonePair.h"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
@@ -68,7 +69,7 @@ TEST_F(LightstoneTest, ReadingOnePairReturnsNonZeroValues)
   testLightstone.open();
   LightstonePair thePair = testLightstone.readOnePair();
 
-  EXPECT_NE(thePair.heartRateVariability, (float)0.0);
-  EXPECT_NE(thePair.skinConductance, (float)0.0);
+  EXPECT_NE(thePair.getHRV(), (float)0.0);
+  EXPECT_NE(thePair.getSCL(), (float)0.0);
   testLightstone.close();
 }

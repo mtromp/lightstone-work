@@ -66,8 +66,6 @@ bool Lightstone::isOpen()
 LightstonePair Lightstone::readOnePair()
 {
   LightstonePair thePair;
-  thePair.heartRateVariability = (float)0.0;
-  thePair.skinConductance = (float)0.0;
   int transferCount;
   unsigned char theBlock[BLOCK_SIZE+1];
   theBlock[BLOCK_SIZE] = 0; //terminate the block.
@@ -83,8 +81,7 @@ LightstonePair Lightstone::readOnePair()
         rawCaptureComplete = localRawCapture.extractText(theBlock);
         if (rawCaptureComplete)
         {
-          thePair.heartRateVariability = -1.0;
-          thePair.skinConductance = -1.0;
+          thePair.parseString(localRawCapture.returnTextAsString());
           break;
         }
       }

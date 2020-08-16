@@ -1,12 +1,9 @@
 #ifndef LIGHTSTONE_H
 #define LIGHTSTONE_H
 
-#include <libusb.h>
+#include "LightstonePair.h"
 
-typedef struct {
-  float heartRateVariability;
-  float skinConductance;
-}LightstonePair;
+#include <libusb.h>
 
 class Lightstone
 {
