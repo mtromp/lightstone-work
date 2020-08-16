@@ -17,7 +17,9 @@ Lightstone monitor:
 - The skin conductance value is multiplied by .01. Result: 5.38
 - The heart rate variability value is multiplied by .001. Result: 0.538
 
-The actual range for Skin Conductance is: 3.0 - 15.0
+According to some sources, the actual range for Skin Conductance is: 3.0 - 15.0
 
-The actual range for Heart Rate Variability is: 1.6 - 2.5 (the example above is
-using a skin conductance value).
+According to some sources,  the actual range for Heart Rate Variability is:
+1.6 - 2.5 (the example above is using a skin conductance value).
+
+When the sensors have no fingers in them, then: HRV ~= 2.0 and SCL ~= 0.17
