@@ -21,9 +21,12 @@ find_package( Threads )
 include ( external/CMakeLists.txt )
 
 # ##################
-# I needed to place FindLibUSB in the cmake Modules folder
+# By setting CMAKE_MODULE_PATH cmake will find FindLibUSB in
+# this project's support folder.
 # The target_link_libraries configuration is where
-# ${LibUSB_LIBRARIES} is used. (Blood and sweat here)
+# ${LibUSB_LIBRARIES} is used.
+
+set (CMAKE_MODULE_PATH "./support/")
 find_package ( LibUSB )
 if ( LibUSB_FOUND )
   include_directories( ${LibUSB_INCLUDE_DIRS} )
