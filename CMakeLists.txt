@@ -26,7 +26,8 @@ include ( external/CMakeLists.txt )
 # The target_link_libraries configuration is where
 # ${LibUSB_LIBRARIES} is used.
 
-set (CMAKE_MODULE_PATH "./support/")
+set (CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/support)
+
 find_package ( LibUSB )
 if ( LibUSB_FOUND )
   include_directories( ${LibUSB_INCLUDE_DIRS} )
